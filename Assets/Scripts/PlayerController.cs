@@ -35,22 +35,26 @@ public class PlayerController : MonoBehaviour
         Vector2 direction = _moveSpeed * _moveAction.ReadValue<Vector2>();
         _moveDir = new Vector3(direction.x, _moveDir.y, direction.y);
 
-        //// Jump
         if (_characterController.isGrounded)
         {
-            // */? _jumpForce : 0f;
+            // Jump
             if (_jumpAction.IsPressed())
             {
                 _moveDir.y = _jumpForce;
             }
+            // Fix weird jump force
+            else if (Mathf.Abs(_moveDir.y) > 0.4f)
+            {
+                _moveDir.y = 0f;
+            }
         }
         else
         {
-            //Gravity
+            // Gravity
             _moveDir.y += _gravity * Time.deltaTime;
         }
 
-        print("Grounded => " + _characterController.isGrounded + " " + _moveDir);
+        //print("Grounded => " + _characterController.isGrounded + " " + _moveDir);
         // Apply
         _characterController.Move(_moveDir * Time.deltaTime);
     }
