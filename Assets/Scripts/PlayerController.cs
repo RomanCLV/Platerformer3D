@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private InputAction _jumpAction;
     private Transform _transform;
 
+    //private bool _hasJumped;
+
     private void Awake()
     {
         _transform = GetComponent<Transform>();
@@ -33,15 +35,22 @@ public class PlayerController : MonoBehaviour
         Vector2 direction = _moveSpeed * _moveAction.ReadValue<Vector2>();
         _moveDir = new Vector3(direction.x, _moveDir.y, direction.y);
 
-        // Jump
-        if (_jumpAction.IsPressed() && _characterController.isGrounded)
+        //// Jump
+        if (_characterController.isGrounded)
         {
-            _moveDir.y = _jumpForce;
+            // */? _jumpForce : 0f;
+            if (_jumpAction.IsPressed())
+            {
+                _moveDir.y = _jumpForce;
+            }
+        }
+        else
+        {
+            //Gravity
+            _moveDir.y += _gravity * Time.deltaTime;
         }
 
-        //Gravity
-        _moveDir.y += _gravity * Time.deltaTime;
-
+        print("Grounded => " + _characterController.isGrounded + " " + _moveDir);
         // Apply
         _characterController.Move(_moveDir * Time.deltaTime);
     }
