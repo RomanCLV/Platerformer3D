@@ -54,6 +54,12 @@ public class PlayerController : MonoBehaviour
             _moveDir.y += _gravity * Time.deltaTime;
         }
 
+        if (_moveDir.x != 0f || _moveDir.z != 0f)
+        {
+            // Change forward direction
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(_moveDir.x, 0f, _moveDir.z)), 0.15f);
+        }
+
         //print("Grounded => " + _characterController.isGrounded + " " + _moveDir);
         // Apply
         _characterController.Move(_moveDir * Time.deltaTime);
