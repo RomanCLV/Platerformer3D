@@ -16,13 +16,11 @@ public class PlayerController : MonoBehaviour
     private PlayerInput _playerInput;
     private InputAction _moveAction;
     private InputAction _jumpAction;
-    private Transform _transform;
 
     //private bool _hasJumped;
 
     private void Awake()
     {
-        _transform = GetComponent<Transform>();
         _characterController = GetComponent<CharacterController>();
         _playerInput = GetComponent<PlayerInput>();
         _moveAction = _playerInput.actions.FindAction("Move");
