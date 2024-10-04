@@ -7,6 +7,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Bambou
+    second: {fileID: 2100000, guid: b50632419992e7e478752475cb2bf46b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bois
+    second: {fileID: 2100000, guid: fd15b69f3cc82694cad6a94bcb5d5c6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Eau
     second: {fileID: 2100000, guid: 70b9dcdbbc6d9ba4ebc5ea7c494065e4, type: 2}
   materials:
